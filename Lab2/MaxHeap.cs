@@ -107,6 +107,22 @@ namespace Lab2
         public T ExtractMin()
         {
             // linear search
+            if (IsEmpty)
+            {
+                throw new Exception("Empty Heap");
+            }
+            // linear search
+            var min = array[0];
+
+            foreach (var item in array)
+            {
+                if (item.CompareTo(min) < 0)
+                {
+                    min = item;
+                }
+            }
+
+            return min;
         }
 
         // TODO
@@ -151,7 +167,7 @@ namespace Lab2
         /// </summary>
         private static int Parent(int position)
         {
-
+            return (position - 1) / 2;
         }
 
         // TODO
@@ -160,6 +176,7 @@ namespace Lab2
         /// </summary>
         private static int LeftChild(int position)
         {
+            return 2 * position + 1;
         }
 
         // TODO
@@ -168,6 +185,7 @@ namespace Lab2
         /// </summary>
         private static int RightChild(int position)
         {
+            return 2 * position + 2;
         }
 
         private void Swap(int index1, int index2)
@@ -186,5 +204,5 @@ namespace Lab2
 
     }
 }
-}
+
 

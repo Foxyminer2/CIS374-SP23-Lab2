@@ -80,8 +80,24 @@ namespace Lab2
         /// </summary>
         public T ExtractMax()
         {
+            if (IsEmpty)
+            {
+                throw new Exception("Empty Heap");
+            }
             // linear search
+            var max = array[0]; 
 
+            foreach (var item in array)
+            {
+                if (item.CompareTo(max) > 0)
+                {
+                    max = item;
+                }
+            }
+
+
+
+            return max;
 
         }
 
@@ -132,6 +148,13 @@ namespace Lab2
 
         }
 
+
+        public void Remove(T value)
+        {
+
+        }
+
+
         // TODO
         // Time Complexity: O( log(n) )
         private void TrickleUp(int index)
@@ -153,7 +176,7 @@ namespace Lab2
         /// </summary>
         private static int Parent(int position)
         {
-
+            return (position - 1) / 2;
         }
 
         // TODO
@@ -162,6 +185,7 @@ namespace Lab2
         /// </summary>
         private static int LeftChild(int position)
         {
+            return 2 * position + 1;
         }
 
         // TODO
@@ -170,6 +194,7 @@ namespace Lab2
         /// </summary>
         private static int RightChild(int position)
         {
+            return 2 * position + 2;
         }
 
         private void Swap(int index1, int index2)
