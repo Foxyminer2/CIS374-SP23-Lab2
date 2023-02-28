@@ -150,7 +150,24 @@ namespace Lab2
         // Time Complexity: O( log(n) )
         private void TrickleUp(int index)
         {
+            while (index > 0)
+            {
+                var parentIndex = (index - 1) / 2;
 
+                if (array[index].CompareTo(array[parentIndex]) <= 0)
+                {
+                    return;
+                }
+                else
+                {
+                    var temp = array[index];
+
+                    array[index] = array[parentIndex];
+                    array[parentIndex] = temp;
+
+                    index = parentIndex;
+                }
+            }
 
         }
 
@@ -158,7 +175,38 @@ namespace Lab2
         // Time Complexity: O( log(n) )
         private void TrickleDown(int index)
         {
+            var childIndex = 2 * index + 1;
+            var value = array[index];
 
+            while (childIndex < Capacity)
+            {
+                var maxValue = value;
+                var maxIndex = -1;
+                var i = 0;
+                while (i < 2 && i + childIndex < Capacity)
+                {
+                    if(array[i + childIndex].CompareTo(maxValue) > 0)
+                    {
+                        maxValue = array[i + childIndex];
+                        maxIndex = i + childIndex;
+                    }
+                    Count++;
+                }
+
+                if(maxValue.CompareTo(value) == 0)
+                {
+                    return;
+                }
+                else
+                {
+                    var temp = array[index];
+                    array[index] = array[maxIndex];
+                    array[maxIndex] = temp;
+
+                    index = maxIndex;
+                    childIndex = 2 * index + 1;
+                }
+            }
         }
 
         // TODO
