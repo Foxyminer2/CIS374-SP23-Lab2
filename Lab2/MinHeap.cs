@@ -152,6 +152,16 @@ namespace Lab2
         public void Remove(T value)
         {
 
+            for (int i = 0; i < Count; i++)
+            {
+                if (array[i].CompareTo(value) == 0)
+                {
+                    Swap(i, Count-1);
+                    Count = Count - 1;
+                    TrickleDown(i);
+                }
+                
+            }
         }
 
 
