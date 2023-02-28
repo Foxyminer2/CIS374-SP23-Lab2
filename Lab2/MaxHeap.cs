@@ -236,6 +236,52 @@ namespace Lab2
             return 2 * position + 2;
         }
 
+        // TODO
+        /// <summary>
+        /// Removes the first element with the given value from the heap.
+        /// Time complexity: O(n )
+        /// </summary>
+        public void Remove(T value)
+        {
+
+            for (int i = 0; i < Count; i++)
+            {
+                if (array[i].CompareTo(value) == 0)
+                {
+                    Swap(i, Count - 1);
+                    Count = Count - 1;
+                    TrickleDown(i);
+
+                    return;
+                }
+
+            }
+        }
+
+
+        // TODO
+        /// <summary>
+        /// Updates the first element with the given value from the heap.
+        /// Time complexity: O( ? )
+        /// </summary>
+        public void Update(T oldValue, T newValue)
+        {
+
+            for (int i = 0; i < Count; i++)
+            {
+                if (array[i].CompareTo(oldValue) == 0)
+                {
+                    array[i] = newValue;
+
+                    TrickleDown(i);
+
+                    return;
+                }
+
+            }
+
+        }
+
         private void Swap(int index1, int index2)
         {
             var temp = array[index1];

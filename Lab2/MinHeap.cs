@@ -150,7 +150,11 @@ namespace Lab2
 
         }
 
-
+        // TODO
+        /// <summary>
+        /// Removes the first element with the given value from the heap.
+        /// Time complexity: O(n )
+        /// </summary>
         public void Remove(T value)
         {
 
@@ -161,6 +165,8 @@ namespace Lab2
                     Swap(i, Count-1);
                     Count = Count - 1;
                     TrickleDown(i);
+
+                    return;
                 }
                 
             }
@@ -175,21 +181,21 @@ namespace Lab2
         public void Update(T oldValue, T newValue)
         {
 
+            for (int i = 0; i < Count; i++)
+            {
+                if (array[i].CompareTo(oldValue) == 0)
+                {
+                    array[i] = newValue;
+                    
+                    TrickleDown(i);
 
+                    return;
+                }
+
+            }
 
         }
 
-        // TODO
-        /// <summary>
-        /// Removes the first element with the given value from the heap.
-        /// Time complexity: O( ? )
-        /// </summary>
-        public void Remove(T value)
-        {
-
-
-
-        }
 
         // TODO
         // Time Complexity: O( log(n) )
@@ -199,7 +205,7 @@ namespace Lab2
             {
                 var parentIndex = (index - 1) / 2;
 
-                if (array[index].CompareTo(array[parentIndex]) <= 0)
+                if (array[index].CompareTo(array[parentIndex]) >= 0)
                 {
                     return;
                 }
@@ -230,7 +236,7 @@ namespace Lab2
                 var i = 0;
                 while (i < 2 && i + childIndex < Capacity)
                 {
-                    if (array[i + childIndex].CompareTo(maxValue) > 0)
+                    if (array[i + childIndex].CompareTo(maxValue) < 0)
                     {
                         maxValue = array[i + childIndex];
                         maxIndex = i + childIndex;
