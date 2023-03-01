@@ -94,7 +94,7 @@ namespace Lab2
             Count--;
 
             // trickle down from root (first)
-            TrickleDown(0);
+            //TrickleDown(0);
 
             return max;
         }
