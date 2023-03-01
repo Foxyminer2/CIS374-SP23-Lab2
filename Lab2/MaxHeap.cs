@@ -122,9 +122,6 @@ namespace Lab2
                 }
             }
 
-            Count--;
-
-            TrickleDown(0);
 
             return min;
         }
@@ -138,14 +135,28 @@ namespace Lab2
         {
             // linear search
 
+
+            //for (int i = 0; i < Count; i++)
+            //{
+            //    if (array[i].CompareTo(value) == 0)
+            //    {
+            //        Swap(i, Count - 1);
+            //        Count = Count - 1;
+            //        TrickleDown(i);
+
+            //        return;
+            //    }
+
+            //}
+
             if (IsEmpty)
             {
                 return false;
             }
 
-            foreach (var item in array)
+            for (int i = 0; i < Count ; i++)
             {
-                if (item.CompareTo(value) == 0)
+                if (array[i].CompareTo(value) == 0)
                 {
                     return true;
                 }
