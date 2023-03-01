@@ -94,7 +94,7 @@ namespace Lab2
             Count--;
 
             // trickle down from root (first)
-            //TrickleDown(0);
+            TrickleDown(0);
 
             return max;
         }
@@ -133,6 +133,11 @@ namespace Lab2
         public bool Contains(T value)
         {
             // linear search
+
+            if (IsEmpty)
+            {
+                throw new Exception("Empty Heap");
+            }
 
             foreach (var item in array)
             {
@@ -178,19 +183,19 @@ namespace Lab2
             var childIndex = 2 * index + 1;
             var value = array[index];
 
-            while (childIndex < Capacity)
+            while (childIndex < Count)
             {
                 var maxValue = value;
                 var maxIndex = -1;
                 var i = 0;
-                while (i < 2 && i + childIndex < Capacity)
+                while (i < 2 && i + childIndex < Count )
                 {
                     if(array[i + childIndex].CompareTo(maxValue) > 0)
                     {
                         maxValue = array[i + childIndex];
                         maxIndex = i + childIndex;
                     }
-                    Count++;
+                    i++;
                 }
 
                 if(maxValue.CompareTo(value) == 0)
@@ -199,9 +204,10 @@ namespace Lab2
                 }
                 else
                 {
-                    var temp = array[index];
-                    array[index] = array[maxIndex];
-                    array[maxIndex] = temp;
+                    Swap(index, maxIndex);
+                    //var temp = array[index];
+                    //array[index] = array[maxIndex];
+                    //array[maxIndex] = temp;
 
                     index = maxIndex;
                     childIndex = 2 * index + 1;
