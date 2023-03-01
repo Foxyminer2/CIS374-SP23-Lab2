@@ -122,6 +122,10 @@ namespace Lab2
                 }
             }
 
+            Count--;
+
+            TrickleDown(0);
+
             return min;
         }
 
@@ -136,7 +140,7 @@ namespace Lab2
 
             if (IsEmpty)
             {
-                throw new Exception("Empty Heap");
+                return false;
             }
 
             foreach (var item in array)
