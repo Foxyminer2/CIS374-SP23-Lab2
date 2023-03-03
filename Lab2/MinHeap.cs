@@ -192,8 +192,17 @@ namespace Lab2
                 if (array[i].CompareTo(oldValue) == 0)
                 {
                     array[i] = newValue;
+
+                    if(i.CompareTo(oldValue) > 0)
+                    {
+                        TrickleDown(i);
+                    }
+                    else
+                    {
+                        TrickleUp(i);
+                    }
                     
-                    TrickleDown(i);
+                    
 
                     return;
                 }

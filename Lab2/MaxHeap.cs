@@ -283,7 +283,14 @@ namespace Lab2
                 {
                     array[i] = newValue;
 
-                    TrickleDown(i);
+                    if (i.CompareTo(oldValue) > 0)
+                    {
+                        TrickleDown(i);
+                    }
+                    else
+                    {
+                        TrickleUp(i);
+                    }
 
                     return;
                 }
