@@ -265,6 +265,7 @@ namespace Lab2
                 }
 
             }
+            throw new Exception("Not Found");
         }
 
 
@@ -288,6 +289,7 @@ namespace Lab2
                 }
 
             }
+            throw new Exception("Not Found");
 
         }
 
